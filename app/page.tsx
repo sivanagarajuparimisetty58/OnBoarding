@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -247,7 +246,7 @@ export default function OnboardingFlow() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome to Zealthy</h1>
-          <p className="text-gray-600">Let's get you set up with a personalized experience</p>
+          <p className="text-gray-600">Lets get you set up with a personalized experience</p>
         </div>
 
         <ProgressIndicator currentStep={currentStep} totalSteps={3} />

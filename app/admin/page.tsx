@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -43,15 +42,15 @@ export default function AdminPanel() {
   const moveComponent = (component: ComponentType, fromPage: number, toPage: number) => {
     setConfig(prev => {
       const newConfig = { ...prev }
-      
+
       // Remove from source page
       newConfig[fromPage] = newConfig[fromPage].filter(c => c !== component)
-      
+
       // Add to destination page
       if (!newConfig[toPage].includes(component)) {
         newConfig[toPage] = [...newConfig[toPage], component]
       }
-      
+
       return newConfig
     })
   }
@@ -59,7 +58,7 @@ export default function AdminPanel() {
   const removeComponent = (component: ComponentType, page: number) => {
     setConfig(prev => {
       const newConfig = { ...prev }
-      
+
       // Don't allow removing if it would leave the page empty
       if (newConfig[page].length <= 1) {
         toast({
@@ -69,7 +68,7 @@ export default function AdminPanel() {
         })
         return prev
       }
-      
+
       newConfig[page] = newConfig[page].filter(c => c !== component)
       return newConfig
     })
@@ -78,7 +77,7 @@ export default function AdminPanel() {
   const addComponent = (component: ComponentType, page: number) => {
     setConfig(prev => {
       const newConfig = { ...prev }
-      
+
       // Remove from other pages first
       Object.keys(newConfig).forEach(p => {
         const pageNum = parseInt(p)
@@ -86,12 +85,12 @@ export default function AdminPanel() {
           newConfig[pageNum] = newConfig[pageNum].filter(c => c !== component)
         }
       })
-      
+
       // Add to target page if not already there
       if (!newConfig[page].includes(component)) {
         newConfig[page] = [...newConfig[page], component]
       }
-      
+
       return newConfig
     })
   }
@@ -109,7 +108,7 @@ export default function AdminPanel() {
 
     setSaving(true)
     const success = await updateOnboardingConfig(config)
-    
+
     if (success) {
       toast({
         title: "Configuration saved",
@@ -122,7 +121,7 @@ export default function AdminPanel() {
         variant: "destructive",
       })
     }
-    
+
     setSaving(false)
   }
 
@@ -157,7 +156,7 @@ export default function AdminPanel() {
               <p className="text-gray-600">Configure the onboarding flow components</p>
             </div>
           </div>
-          
+
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => window.location.href = '/'}>
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -206,7 +205,7 @@ export default function AdminPanel() {
                     </div>
                   </div>
                 ))}
-                
+
                 {config[2].length === 0 && (
                   <p className="text-center text-gray-500 py-4">No components assigned to this page</p>
                 )}
@@ -249,7 +248,7 @@ export default function AdminPanel() {
                     </div>
                   </div>
                 ))}
-                
+
                 {config[3].length === 0 && (
                   <p className="text-center text-gray-500 py-4">No components assigned to this page</p>
                 )}
@@ -301,10 +300,10 @@ export default function AdminPanel() {
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>• Use the "Move" buttons to transfer components between pages</li>
-              <li>• Use "Remove" to unassign a component from a page</li>
-              <li>• Click "Save Changes" to apply the new configuration to the onboarding flow</li>
-              <li>• Changes will immediately affect new users going through onboarding</li>
+              <li>&bull; Use the &quot;Move&quot; buttons to transfer components between pages</li>
+              <li>&bull; Use &quot;Remove&quot; to unassign a component from a page</li>
+              <li>&bull; Click &quot;Save Changes&quot; to apply the new configuration to the onboarding flow</li>
+              <li>&bull; Changes will immediately affect new users going through onboarding</li>
             </ul>
           </CardContent>
         </Card>
