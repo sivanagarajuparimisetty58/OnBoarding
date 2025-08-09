@@ -35,7 +35,7 @@ export function ProgressIndicator({ currentStep, totalSteps }: ProgressIndicator
         })}
       </div>
       
-      <Progress value={progress} className="h-2" />
+      {/* <Progress value={progress} className="h-2" /> */}
       
       <div className="text-center mt-2 text-sm text-muted-foreground">
         Step {currentStep} of {totalSteps}
