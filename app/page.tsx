@@ -89,6 +89,9 @@ export default function OnboardingFlow() {
           if (!address.street_address || !address.city || !address.state || !address.zip) {
             newErrors.address = 'Please fill in all address fields'
           }
+          if (!/^\d+$/.test(address.zip)) {
+            newErrors.address = 'Zipcode must be numbers';
+          }
         } else if (component === 'birthdate') {
           if (!formData.birthdate) {
             newErrors.birthdate = 'Please select your birth date'
