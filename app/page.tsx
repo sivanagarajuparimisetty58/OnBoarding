@@ -67,8 +67,11 @@ export default function OnboardingFlow() {
     const newErrors: Record<string, string> = {}
 
     if (step === 1) {
-      if (!email || !/\S+@\S+\.\S+/.test(email)) {
-        newErrors.email = 'Please enter a valid email address'
+      if (
+        !email ||
+        !/^[^\s@]+@[^\s@\.]+\.[^\s@]+$/.test(email)
+      ) {
+        newErrors.email = 'Please enter a valid email address';
       }
       if (!password || password.length < 6) {
         newErrors.password = 'Password must be at least 6 characters long'
